@@ -1,0 +1,66 @@
+
+/* Class = "UILabel"; text = "Bienvenue"; ObjectID = "7fk-06-N2q"; */
+"7fk-06-N2q.text" = "Bienvenue";
+
+/* Class = "UILabel"; text = "Passeword"; ObjectID = "A5I-zF-nHb"; */
+"A5I-zF-nHb.text" = "Passeword";
+
+/* Class = "UIButton"; normalTitle = "CREER UN COMPTE"; ObjectID = "EQO-TH-L4O"; */
+"EQO-TH-L4O.normalTitle" = "CREER UN COMPTE";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "F8o-Sx-hk1"; */
+"F8o-Sx-hk1.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Ghb-wj-Nb1"; */
+"Ghb-wj-Nb1.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Prénom"; ObjectID = "GlS-8X-vSv"; */
+"GlS-8X-vSv.placeholder" = "Prénom";
+
+/* Class = "UITextField"; placeholder = "Confirme mot de passe"; ObjectID = "HR7-bU-SCb"; */
+"HR7-bU-SCb.placeholder" = "Confirme mot de passe";
+
+/* Class = "UITextField"; placeholder = "login"; ObjectID = "IOD-y1-bKE"; */
+"IOD-y1-bKE.placeholder" = "login";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "KrI-aC-9tn"; */
+"KrI-aC-9tn.normalTitle" = "OK";
+
+/* Class = "UIButton"; normalTitle = "Se Connecter"; ObjectID = "KtX-0z-kR1"; */
+"KtX-0z-kR1.normalTitle" = "Se Connecter";
+
+/* Class = "UIButton"; normalTitle = "S'INSCRIRE"; ObjectID = "TOT-Pq-WL1"; */
+"TOT-Pq-WL1.normalTitle" = "S'INSCRIRE";
+
+/* Class = "UIButton"; normalTitle = "SE CONNECTER"; ObjectID = "VdN-qa-8f3"; */
+"VdN-qa-8f3.normalTitle" = "SE CONNECTER";
+
+/* Class = "UITextField"; placeholder = "Nom"; ObjectID = "YBp-gE-Mnm"; */
+"YBp-gE-Mnm.placeholder" = "Nom";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "YEY-Vf-qBO"; */
+"YEY-Vf-qBO.placeholder" = "Email";
+
+/* Class = "UITextField"; placeholder = "Mot de passe"; ObjectID = "h3K-IP-zVs"; */
+"h3K-IP-zVs.placeholder" = "Mot de passe";
+
+/* Class = "UIViewController"; title = "Créer un compte"; ObjectID = "lDo-3X-78U"; */
+"lDo-3X-78U.title" = "Créer un compte";
+
+/* Class = "UILabel"; text = "Login"; ObjectID = "qih-Uh-d1r"; */
+"qih-Uh-d1r.text" = "Login";
+
+/* Class = "UILabel"; text = "label"; ObjectID = "sbj-hQ-oDN"; */
+"sbj-hQ-oDN.text" = "label";
+
+/* Class = "UIButton"; normalTitle = "Go to Connexion"; ObjectID = "stc-sQ-Mkn"; */
+"stc-sQ-Mkn.normalTitle" = "Go to Connexion";
+
+/* Class = "UITextField"; placeholder = "Code Postal"; ObjectID = "unF-cf-mTV"; */
+"unF-cf-mTV.placeholder" = "Code Postal";
+
+/* Class = "UIViewController"; title = "Connection"; ObjectID = "xwW-K0-lRk"; */
+"xwW-K0-lRk.title" = "Connection";
+
+/* Class = "UITextField"; placeholder = "Date Naissance"; ObjectID = "yzf-Qy-9yi"; */
+"yzf-Qy-9yi.placeholder" = "Date Naissance";

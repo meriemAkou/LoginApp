@@ -2,44 +2,84 @@
 //  UserModel.swift
 //  login
 //
-//  Created by mac on 31/03/2017.
+//  Created by mac on 27/04/2017.
 //  Copyright © 2017 mac. All rights reserved.
 //
 
 import Foundation
 
-class UserModel:NSObject{
+class UserModel {
 
-    var login:String
-    var password:String
+    private var  login : String = ""
+    private var password: String = ""
+    private var nom: String = ""
+    private var prenom: String = ""
+    private var dateNaissance : Date = Date()
+    private var codePostal: String = ""
     
-    func md5(_ string: String) -> String {
-        
-        let context = UnsafeMutablePointer<CC_MD5_CTX>.allocate(capacity: 1)
-        var digest = Array<UInt8>(repeating:0, count:Int(CC_MD5_DIGEST_LENGTH))
-        CC_MD5_Init(context)
-        CC_MD5_Update(context, string, CC_LONG(string.lengthOfBytes(using: String.Encoding.utf8)))
-        CC_MD5_Final(&digest, context)
-        context.deallocate(capacity: 1)
-        var hexString = ""
-        for byte in digest {
-            hexString += String(format:"%02x", byte)
-        }
-        
-        return hexString
-    }
-
-    
-    
-    init(login:String,password:String){
+    init(login: String, password:String, nom: String, prenom: String, dateNaissance: Date, codePostal: String){
+        //super.init()
         self.login = login
-        self.password = password
+        self.password = password.md5()
+        self.nom = nom
+        self.prenom = prenom
+        self.dateNaissance = dateNaissance
+        self.codePostal = codePostal
+    }
+    init(){
+        
+    }
+    //Les Guetteurs
+    func getNom ()->String {
+        return self.nom
     }
     
-    override var description: String {
-        return "login: \(self.login), password: \(self.password)"
+    func getPrenom ()->String {
+        return self.prenom
     }
     
+    func getdateNaissance ()->Date {
+        return self.dateNaissance
+    }
     
-
+    func getcodePostal ()->String {
+        return self.codePostal
+    }
+    
+    func getlogin ()->String {
+        return self.login
+    }
+    
+    func getPWD ()->String {
+        return self.password
+    }
+    
+    // Les setteurs
+    func setNom(nom:String){
+        self.nom = nom
+    }
+    
+    func setPrenom(prenom:String){
+        self.prenom = prenom
+    }
+    
+    func setdateNaissance ( datenaissance:Date){
+        self.dateNaissance = datenaissance
+    }
+    
+    func setcodePostal( codePostal: String){
+        self.codePostal = codePostal
+    }
+    
+    func setPassword ( password : String){
+        self.password = password.md5()
+    }
+    
+    func setLogin ( login:String){
+        self.login = login
+    }
+    
+}
+func == (user01: UserModel, user02: UserModel) -> Bool {
+    return user01.getNom() == user02.getNom() && user01.getPrenom() == user02.getPrenom() && user01.getcodePostal() == user02.getcodePostal() && user01.getdateNaissance() == user02.getdateNaissance()
 }

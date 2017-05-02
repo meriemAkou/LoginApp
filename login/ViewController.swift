@@ -23,46 +23,41 @@ class ViewController: connection {
         if Reachability.isConnectedToNetwork() == true
         {
             //On a la connexion internet
-            // On vérifie si on a les identifiants de l'utilisateur dans le Keychain
-            //Si on n'a pas d'identifiant dans le Keychain  on redirige vers la page de connexion
-            if (KeychainService.loadLogin() == nil || KeychainService.loadPassword() == nil)
-            {
-                self.performSegue(withIdentifier: "GoToConnect", sender: self)
-            }
-            else {
-                activityIndicator01.center=self.view.center
-                activityIndicator01.hidesWhenStopped=true
-                activityIndicator01.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-                view.addSubview(activityIndicator01)
-                activityIndicator01.startAnimating()
-                UIApplication.shared.beginIgnoringInteractionEvents()
-                
-                if (KeychainService.loadLogin() != nil)
+            //On vérifie si l'utilisateur s'est déjà connecte
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            if   (appDelegate.connected == nil || !appDelegate.connected! ) {
+                // On vérifie si on a les identifiants de l'utilisateur dans le Keychain
+                //Si on n'a pas d'identifiant dans le Keychain  on redirige vers la page de connexion
+                if (KeychainService.loadLogin() == nil || KeychainService.loadPassword() == nil)
                 {
-                    login = KeychainService.loadLogin()! as String
-                    
+                    self.performSegue(withIdentifier: "GoToConnect", sender: self)
                 }
-                if (KeychainService.loadPassword() != nil)
-                {
+                else {
+                    activityIndicator01.center=self.view.center
+                    activityIndicator01.hidesWhenStopped=true
+                    activityIndicator01.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+                    view.addSubview(activityIndicator01)
+                    activityIndicator01.startAnimating()
+                    UIApplication.shared.beginIgnoringInteractionEvents()
                     
-                    Password = KeychainService.loadPassword()! as String
+                    if (KeychainService.loadLogin() != nil)
+                    {
+                        login = KeychainService.loadLogin()! as String
+                        
+                    }
+                    if (KeychainService.loadPassword() != nil)
+                    {
+                        
+                        Password = KeychainService.loadPassword()! as String
+                    }
+                    //Vérifier que la connection marche avec les données du Keychain
+                    
+                    createLogin = VerifyData()
+                    let  user : UserModel = UserModel(login: login, password: Password, nom: "", prenom: "", dateNaissance: Date(), codePostal: "")
+                    
+                    createLogin.VerifyDBCount(controller:self,User: user)
                 }
-                //Vérifier que la connection marche avec les données du Keychain
-                
-                createLogin = VerifyData(mail: login, password: Password, confirmPassword:"" , nom: "", prenom: "", dateNaissance: "", codePostal: "")
-
-                
-                createLogin.VerifyDBCount(controller:self)
-                /*if result != "" {
-                    self.performSegue(withIdentifier: "GoToConnect", sender: nil)
-                }*/
             }
-            
-            //Si oui on verifie s'il sont bon
-            
-            //Si oui on affiche l'accueil et on ajoute un message
-            //Sinon on va vers la page de connexion /création de compte
-            
         }
         else
         {
@@ -95,20 +90,23 @@ class ViewController: connection {
     override func getResultDBCheck(){
         //let result =  createLogin.VerifyDBCount(controller:self)
         if connection.information == "" {
-            self.performSegue(withIdentifier: "GoToConnect", sender: nil)
+            self.performSegue(withIdentifier: "GoToConnect", sender: self)
         }
         else {
             if (connection.information.range(of: "OK") != nil || connection.information.range(of: "Bienvenue") != nil)
             {
                 print("bienvenue vous vous êtes connecté")
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.connected = true
+                
             }
             else
             {
                 print("compte introuvable")
-                //Supprimer les données du keychain et envoyé l'utilisateur vers la page de connection 
+                //Supprimer les données du keychain et envoyé l'utilisateur vers la page de connection
                 KeychainService.deleteLogin(token: "")
                 KeychainService.deletePasswod(token: "")
-                self.performSegue(withIdentifier: "GoToConnect", sender: nil)
+                self.performSegue(withIdentifier: "GoToConnect", sender: self)
                 
             }
         }

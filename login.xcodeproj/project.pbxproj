@@ -11,20 +11,19 @@
 		041BBD2D1E8D0F9800BDF0B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BBD2C1E8D0F9800BDF0B4 /* ViewController.swift */; };
 		041BBD321E8D0F9800BDF0B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041BBD311E8D0F9800BDF0B4 /* Assets.xcassets */; };
 		041BBD351E8D0F9800BDF0B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 041BBD331E8D0F9800BDF0B4 /* LaunchScreen.storyboard */; };
-		041BBD3D1E8D107600BDF0B4 /* RequestTraitement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BBD3C1E8D107600BDF0B4 /* RequestTraitement.swift */; };
 		041BBD3F1E8D4D3D00BDF0B4 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BBD3E1E8D4D3D00BDF0B4 /* KeychainService.swift */; };
-		04313D811E9E6ACF00AEA30E /* SondageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04313D801E9E6ACF00AEA30E /* SondageViewController.swift */; };
-		04313D831E9E6E1800AEA30E /* sondageTraitement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04313D821E9E6E1800AEA30E /* sondageTraitement.swift */; };
 		04313D851E9F886700AEA30E /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 04313D841E9F886700AEA30E /* facebook.png */; };
 		04313D871E9F8AD300AEA30E /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 04313D861E9F8AD300AEA30E /* twitter.png */; };
 		044937ED1E95002F00C8E8DD /* connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044937EC1E95002F00C8E8DD /* connection.swift */; };
-		044937EF1E963B4800C8E8DD /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044937EE1E963B4800C8E8DD /* PopUpViewController.swift */; };
 		044937F31E9648F100C8E8DD /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 044937F21E9648F100C8E8DD /* images.jpeg */; };
 		044C42971EAF8565008134A7 /* MotDePasseOublieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C42961EAF8565008134A7 /* MotDePasseOublieViewController.swift */; };
+		044C42991EB201C6008134A7 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C42981EB201C6008134A7 /* MyAccountViewController.swift */; };
+		044C429D1EB20A39008134A7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C429C1EB20A39008134A7 /* UserModel.swift */; };
 		047283301E8E4DE800E0C1DE /* CreateLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0472832F1E8E4DE800E0C1DE /* CreateLogin.swift */; };
 		047599131E9D2229007742A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047599121E9D2229007742A0 /* Main.storyboard */; };
 		04BC79C61EA8AFFD007468B0 /* NetworkConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BC79C51EA8AFFD007468B0 /* NetworkConnection.swift */; };
 		04EC80CC1E8E91C7005CD99A /* VerifyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EC80CB1E8E91C7005CD99A /* VerifyData.swift */; };
+		3A90CBF51EB754C300276363 /* RenetialisePWDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90CBF41EB754C300276363 /* RenetialisePWDViewController.swift */; };
 		785E4C72BF80C16F1000F0A1 /* Pods_login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE1AE8825693BC1D14CE6ED /* Pods_login.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,22 +34,21 @@
 		041BBD311E8D0F9800BDF0B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		041BBD341E8D0F9800BDF0B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		041BBD361E8D0F9800BDF0B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		041BBD3C1E8D107600BDF0B4 /* RequestTraitement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestTraitement.swift; sourceTree = "<group>"; };
 		041BBD3E1E8D4D3D00BDF0B4 /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
-		04313D801E9E6ACF00AEA30E /* SondageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SondageViewController.swift; sourceTree = "<group>"; };
-		04313D821E9E6E1800AEA30E /* sondageTraitement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sondageTraitement.swift; sourceTree = "<group>"; };
 		04313D841E9F886700AEA30E /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
 		04313D861E9F8AD300AEA30E /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
 		04313D881E9FB83D00AEA30E /* login.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = login.entitlements; sourceTree = "<group>"; };
 		044937EC1E95002F00C8E8DD /* connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = connection.swift; sourceTree = "<group>"; };
-		044937EE1E963B4800C8E8DD /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		044937F21E9648F100C8E8DD /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
 		044C42961EAF8565008134A7 /* MotDePasseOublieViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotDePasseOublieViewController.swift; sourceTree = "<group>"; };
+		044C42981EB201C6008134A7 /* MyAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
+		044C429C1EB20A39008134A7 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		0472832F1E8E4DE800E0C1DE /* CreateLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateLogin.swift; sourceTree = "<group>"; };
 		047599121E9D2229007742A0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		04BC79C51EA8AFFD007468B0 /* NetworkConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkConnection.swift; sourceTree = "<group>"; };
 		04EC80CB1E8E91C7005CD99A /* VerifyData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyData.swift; sourceTree = "<group>"; };
 		29F3EC129FBFF81180AFB1FC /* Pods-login.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-login.debug.xcconfig"; path = "Pods/Target Support Files/Pods-login/Pods-login.debug.xcconfig"; sourceTree = "<group>"; };
+		3A90CBF41EB754C300276363 /* RenetialisePWDViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenetialisePWDViewController.swift; sourceTree = "<group>"; };
 		4ABA68768675103240C2C2C5 /* Pods-login.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-login.release.xcconfig"; path = "Pods/Target Support Files/Pods-login/Pods-login.release.xcconfig"; sourceTree = "<group>"; };
 		CAE1AE8825693BC1D14CE6ED /* Pods_login.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_login.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -88,6 +86,8 @@
 		041BBD291E8D0F9800BDF0B4 /* login */ = {
 			isa = PBXGroup;
 			children = (
+				044C429B1EB2025A008134A7 /* LoginModel */,
+				044C429A1EB201DA008134A7 /* LoginViewController */,
 				04313D881E9FB83D00AEA30E /* login.entitlements */,
 				044937F01E9646B100C8E8DD /* images  */,
 				041BBD2A1E8D0F9800BDF0B4 /* AppDelegate.swift */,
@@ -96,16 +96,6 @@
 				047599121E9D2229007742A0 /* Main.storyboard */,
 				041BBD331E8D0F9800BDF0B4 /* LaunchScreen.storyboard */,
 				041BBD361E8D0F9800BDF0B4 /* Info.plist */,
-				041BBD3C1E8D107600BDF0B4 /* RequestTraitement.swift */,
-				041BBD3E1E8D4D3D00BDF0B4 /* KeychainService.swift */,
-				0472832F1E8E4DE800E0C1DE /* CreateLogin.swift */,
-				04EC80CB1E8E91C7005CD99A /* VerifyData.swift */,
-				044937EC1E95002F00C8E8DD /* connection.swift */,
-				044937EE1E963B4800C8E8DD /* PopUpViewController.swift */,
-				04313D801E9E6ACF00AEA30E /* SondageViewController.swift */,
-				04313D821E9E6E1800AEA30E /* sondageTraitement.swift */,
-				04BC79C51EA8AFFD007468B0 /* NetworkConnection.swift */,
-				044C42961EAF8565008134A7 /* MotDePasseOublieViewController.swift */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -118,6 +108,29 @@
 				04313D861E9F8AD300AEA30E /* twitter.png */,
 			);
 			name = "images ";
+			sourceTree = "<group>";
+		};
+		044C429A1EB201DA008134A7 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				044C42961EAF8565008134A7 /* MotDePasseOublieViewController.swift */,
+				044937EC1E95002F00C8E8DD /* connection.swift */,
+				0472832F1E8E4DE800E0C1DE /* CreateLogin.swift */,
+				3A90CBF41EB754C300276363 /* RenetialisePWDViewController.swift */,
+				044C42981EB201C6008134A7 /* MyAccountViewController.swift */,
+			);
+			name = LoginViewController;
+			sourceTree = "<group>";
+		};
+		044C429B1EB2025A008134A7 /* LoginModel */ = {
+			isa = PBXGroup;
+			children = (
+				04EC80CB1E8E91C7005CD99A /* VerifyData.swift */,
+				041BBD3E1E8D4D3D00BDF0B4 /* KeychainService.swift */,
+				04BC79C51EA8AFFD007468B0 /* NetworkConnection.swift */,
+				044C429C1EB20A39008134A7 /* UserModel.swift */,
+			);
+			name = LoginModel;
 			sourceTree = "<group>";
 		};
 		D3076A612741DCB3D9BBB15B /* Frameworks */ = {
@@ -286,15 +299,14 @@
 			files = (
 				041BBD2D1E8D0F9800BDF0B4 /* ViewController.swift in Sources */,
 				04EC80CC1E8E91C7005CD99A /* VerifyData.swift in Sources */,
-				04313D811E9E6ACF00AEA30E /* SondageViewController.swift in Sources */,
+				044C42991EB201C6008134A7 /* MyAccountViewController.swift in Sources */,
 				044C42971EAF8565008134A7 /* MotDePasseOublieViewController.swift in Sources */,
 				041BBD3F1E8D4D3D00BDF0B4 /* KeychainService.swift in Sources */,
 				044937ED1E95002F00C8E8DD /* connection.swift in Sources */,
-				041BBD3D1E8D107600BDF0B4 /* RequestTraitement.swift in Sources */,
+				3A90CBF51EB754C300276363 /* RenetialisePWDViewController.swift in Sources */,
 				041BBD2B1E8D0F9800BDF0B4 /* AppDelegate.swift in Sources */,
-				04313D831E9E6E1800AEA30E /* sondageTraitement.swift in Sources */,
 				04BC79C61EA8AFFD007468B0 /* NetworkConnection.swift in Sources */,
-				044937EF1E963B4800C8E8DD /* PopUpViewController.swift in Sources */,
+				044C429D1EB20A39008134A7 /* UserModel.swift in Sources */,
 				047283301E8E4DE800E0C1DE /* CreateLogin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,7 +349,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -354,6 +366,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PROFILING_CODE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -361,6 +374,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -391,6 +405,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -399,6 +414,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PROFILING_CODE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;

@@ -15,41 +15,9 @@ import Foundation
 
 class VerifyData: NSObject{
     
-    var mail:String=""
-    var password:String=""
-    var confirmPassword:String=""
-    var nom:String=""
-    var prenom:String=""
-    var dateNaissance:String=""
-    var codePostal:String=""
-    
-    //instanciation de la classe avec les bons paramètres
-    init(mail:String, password:String, confirmPassword:String, nom:String, prenom:String, dateNaissance:String, codePostal:String){
-        self.mail=mail
-        self.password=password
-        self.confirmPassword=confirmPassword
-        self.codePostal=codePostal
-        //Formatage de la date sous forme de YYYYMMdd
-        if(dateNaissance != ""){
-            let inputFormatter01 = DateFormatter()
-            inputFormatter01.dateFormat = "dd-MM-yyyy"
-            let myDate = inputFormatter01.date(from:dateNaissance)
-            let inputFormatter = DateFormatter()
-            inputFormatter.dateFormat = "yyyy-MM-dd"
-            self.dateNaissance  = inputFormatter.string(from: myDate!)
-        }else {
-            self.dateNaissance = ""
-        }
-        self.nom = nom
-        self.prenom = prenom
-    }
-    override init(){
+    func insertinDB(User: UserModel) {
         
-    }
-    
-    func insertinDB() {
-        
-        let URL_SAVE_TEAM = "http://laurentjutier.com/Meriem/login.php?create=1&&new_name="+self.mail + "&&new_password="+self.password + "&&nom="+self.nom+"&&prenom="+self.prenom+"&&dateNaissance="+self.dateNaissance+"&&codePostal="+self.codePostal
+        let URL_SAVE_TEAM = "http://laurentjutier.com/Meriem/login.php?create=1&&new_name="+User.getNom() + "&&new_password="+User.getPWD() + "&&nom="+User.getNom()+"&&prenom="+User.getPrenom()+"&&dateNaissance="+User.getcodePostal()+"&&codePostal="+User.getcodePostal()
         //created NSURL
         let requestURL = NSURL(string: URL_SAVE_TEAM)
         
@@ -77,9 +45,8 @@ class VerifyData: NSObject{
         task.resume()
         
     }
-    
-    func VerifyDBCount(controller: connection?) {
-        let URL_SAVE_TEAM = "http://laurentjutier.com/Meriem/login.php?connect=1&&username="+self.mail + "&&password="+self.password.md5()
+    func VerifyEmailDBB(controller: connection?, email:String) {
+        let URL_SAVE_TEAM = "http://laurentjutier.com/Meriem/login.php?verify=1&&username="+email
         //created NSURL
         let requestURL = NSURL(string: URL_SAVE_TEAM)
         
@@ -101,7 +68,43 @@ class VerifyData: NSObject{
                 
                 // controller.information.isHidden=false
                 // Cette fonction ne sera lancer qu'à la fin de l'exécution de la requête
-               DispatchQueue.main.async {
+                DispatchQueue.main.async {
+                    let dataString = String(data: data!, encoding: String.Encoding.utf8)
+                    connection.information = dataString!
+                    controller?.stopActivityIndicator()
+                }
+            }
+        }
+        //executing the task
+        task.resume()
+        
+        
+        
+    }
+    func VerifyDBCount(controller: connection?, User:UserModel) {
+        let URL_SAVE_TEAM = "http://laurentjutier.com/Meriem/login.php?connect=1&&username="+User.getlogin() + "&&password="+User.getPWD()
+        //created NSURL
+        let requestURL = NSURL(string: URL_SAVE_TEAM)
+        
+        //creating NSMutableURLRequest
+        let request = NSMutableURLRequest(url: requestURL! as URL)
+        
+        //setting the method to post
+        request.httpMethod = "GET"
+        
+        //creating a task to send the post request
+        let task = URLSession.shared.dataTask(with: request as URLRequest) {
+            data, response, error in
+            if error != nil{
+                print(error ?? "")
+                return;
+            }
+                
+            else{
+                
+                // controller.information.isHidden=false
+                // Cette fonction ne sera lancer qu'à la fin de l'exécution de la requête
+                DispatchQueue.main.async {
                     let dataString = String(data: data!, encoding: String.Encoding.utf8)
                     connection.information = dataString!
                     controller?.stopActivityIndicator()
@@ -148,6 +151,48 @@ class VerifyData: NSObject{
         return ( true,"")
         
     }
+    //Récupérer les informations de l'utilisateur est construire l'objet UserModel
+    func getUser (controller: MyAccountViewController, User:UserModel ){
+        var result : UserModel = UserModel()
+        let URL_SAVE_TEAM = "http://laurentjutier.com/Meriem/login.php?informationUser=1&&username="+User.getlogin() + "&&password="+User.getPWD()
+        //created NSURL
+        let requestURL = NSURL(string: URL_SAVE_TEAM)
+        
+        //creating NSMutableURLRequest
+        let request = NSMutableURLRequest(url: requestURL! as URL)
+        
+        //setting the method to post
+        request.httpMethod = "GET"
+        
+        //creating a task to send the post request
+        let task = URLSession.shared.dataTask(with: request as URLRequest) {
+            data, response, error in
+            if error != nil{
+                print(error ?? "")
+                return;
+            }
+                
+            else{
+                do {
+                    let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:String]
+                    result = self.createUserModel(dictionnary: parsedData)
+                }
+                catch let error as NSError {
+                    print(error)
+                }
+                // Cette fonction ne sera lancer qu'à la fin de l'exécution de la requête
+                DispatchQueue.main.async {
+                    let dataString = String(data: data!, encoding: String.Encoding.utf8)
+                    print(dataString ?? "");
+                    connection.information = dataString!
+                        controller.user = result
+                        controller.stopActivityIndicator()
+                }
+                //executing the task
+            }
+        }
+        task.resume()
+    }
     // Pour valider le format du mail
     func isValidEmail(testStr:String) -> Bool {
         // print("validate calendar: \(testStr)")
@@ -156,5 +201,57 @@ class VerifyData: NSObject{
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
     }
-    
+    // Mettre à jour les informations de l'utilisateur
+    func updateuser (controller: MyAccountViewController,User:UserModel){
+        let URL_SAVE_TEAM = "http://laurentjutier.com/Meriem/login.php?updateUser=1&&username="+User.getlogin()+"&&nom="+User.getNom()+"&&prenom="+User.getPrenom()+"&&dateNaissance="+User.getcodePostal()+"&&codePostal="+User.getcodePostal()
+        //created NSURL
+        let requestURL = NSURL(string: URL_SAVE_TEAM)
+        
+        //creating NSMutableURLRequest
+        let request = NSMutableURLRequest(url: requestURL! as URL)
+        
+        //setting the method to post
+        request.httpMethod = "GET"
+        
+        //creating a task to send the post request
+        let task = URLSession.shared.dataTask(with: request as URLRequest) {
+            data, response, error in
+            if error != nil{
+                print(error ?? "")
+                return;
+            }
+                
+            else{
+                
+                // controller.information.isHidden=false
+                // Cette fonction ne sera lancer qu'à la fin de l'exécution de la requête
+                DispatchQueue.main.async {
+                    let dataString = String(data: data!, encoding: String.Encoding.utf8)
+                    controller.user = User
+                    controller?.stopActivityIndicator()
+                }
+            }
+        }
+        //executing the task
+        task.resume()
+
+        
+    }
+    func createUserModel(dictionnary:[String:String])->UserModel{
+        let result: UserModel = UserModel()
+        result.setNom(nom: dictionnary["nom"]!)
+        result.setPrenom(prenom: dictionnary["prenom"]!)
+        result.setcodePostal(codePostal: dictionnary["codePostal"]!)
+        let inputFormatter01 = DateFormatter()
+        inputFormatter01.dateFormat = "yyyy-MM-dd"
+        let myDate = inputFormatter01.date(from: dictionnary["dateNaissance"]!)
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "dd-MM-yyyy"
+        let dateNaissanceString  = inputFormatter.string(from: myDate!)
+        let BearthDate: Date = inputFormatter.date(from: dateNaissanceString)!
+        result.setdateNaissance(datenaissance: BearthDate as Date)
+        result.setLogin(login: dictionnary["login"]!)
+        
+        return result
+    }
 }

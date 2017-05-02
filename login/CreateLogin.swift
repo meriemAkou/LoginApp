@@ -24,7 +24,7 @@ class CreateLogin: UIViewController, UITextFieldDelegate {
         //On est dans la connexion
         
                 // Avant d'instancier la classe on verifie les données pour afficher les messages d'erreur au cas ou 
-                var createLogin :VerifyData = VerifyData()
+                let createLogin :VerifyData = VerifyData()
                 let (correct,message)=createLogin.validateDonnee(mail: EmailCreate.text!, password: passwordCreate.text!, confirmPassword: ConfirmPassword.text!, nom: Nom.text!, prenom: prenom.text!, dateNaissance: dateNaissance.text!, codePostal: codePostal.text!)
                 if (correct == false)
                 {
@@ -32,14 +32,25 @@ class CreateLogin: UIViewController, UITextFieldDelegate {
                     //print(message)
         
                 }else {
-                    createLogin = VerifyData(mail: EmailCreate.text!, password: passwordCreate.text!.md5(), confirmPassword: ConfirmPassword.text!.md5(), nom: Nom.text!, prenom: prenom.text!, dateNaissance: dateNaissance.text!, codePostal: codePostal.text!)
-                    createLogin.insertinDB()
-                    
-        }
+                   // createLogin = VerifyData(mail: EmailCreate.text!, password: passwordCreate.text!.md5(), confirmPassword: ConfirmPassword.text!.md5(), nom: Nom.text!, prenom: prenom.text!, dateNaissance: dateNaissance.text!, codePostal: codePostal.text!)
+                    //Transformer la date de naissance 
+                
+                        let inputFormatter01 = DateFormatter()
+                        inputFormatter01.dateFormat = "dd-MM-yyyy"
+                        let myDate = inputFormatter01.date(from: String(dateNaissance.text!))
+                        let inputFormatter = DateFormatter()
+                        inputFormatter.dateFormat = "yyyy-MM-dd"
+                        let dateNaissanceString  = inputFormatter.string(from: myDate!)
+                        let BearthDate: Date = inputFormatter.date(from: dateNaissanceString)!
+
+                        let user: UserModel = UserModel(login: EmailCreate.text!, password: passwordCreate.text!, nom: Nom.text!, prenom: prenom.text!, dateNaissance: BearthDate, codePostal: codePostal.text!)
+                        createLogin.insertinDB(User: user)
+                    }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         createDatePicker()
     }
     
@@ -118,8 +129,8 @@ class CreateLogin: UIViewController, UITextFieldDelegate {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
         if segue.identifier == "Label" {
-            let nextScene = segue.destination as? PopUpViewController
-            nextScene?.label = self.message
+           // let nextScene = segue.destination as? PopUpViewController
+            //nextScene?.label = self.message
             
         }
     }

@@ -48,12 +48,10 @@ class connection: UIViewController, UITextFieldDelegate {
                     //print ( result.valueForKey("email") as String)
                     //Il faut enregistré le email de l'utilisateur dans la BDD // avec les informations qu'on a pu récupérer 
                     let dic = result as! [String: Any]
-                    var createLogin :VerifyData = VerifyData()
-                    createLogin = VerifyData(mail: String(describing: dic["email"]!), password: "FB", confirmPassword: "", nom: String(describing: dic["first_name"]!), prenom: String(describing: dic["last_name"]!), dateNaissance: "", codePostal: "0")
-                    createLogin.insertinDB()
+                    let createLogin :VerifyData = VerifyData()
+                    let user : UserModel = UserModel(login: dic["email"]! as! String, password: "FB", nom: String(describing: dic["first_name"]!), prenom: String(describing: dic["last_name"]!), dateNaissance: Date(), codePostal: "0")
+                    createLogin.insertinDB(User: user)
                     
-                    //let userEmail : NSString = result. valueForKey("email") as! NSString
-                    //print("User Email is: \(userEmail)")
                 })
             }
         }
@@ -89,7 +87,7 @@ class connection: UIViewController, UITextFieldDelegate {
     @IBAction func sendConnection(_ sender: UIButton) {
         
         //il faut verifier la bonne syntaxe de l'email sinon on affiche un message d'erreur
-        var createLogin :VerifyData = VerifyData()
+        let createLogin :VerifyData = VerifyData()
         let valide = createLogin.isValidEmail(testStr: login.text!)
         activityIndicator.center=self.view.center
         activityIndicator.hidesWhenStopped=true
@@ -100,8 +98,9 @@ class connection: UIViewController, UITextFieldDelegate {
         
         if (valide && Password.text != "")
         {
-            createLogin = VerifyData(mail: login.text!, password: Password.text!, confirmPassword:"" , nom: "", prenom: "", dateNaissance: "", codePostal: "")
-            createLogin.VerifyDBCount(controller: self)
+            //createLogin = VerifyData(mail: login.text!, password: Password.text!, confirmPassword:"" , nom: "", prenom: "", dateNaissance: "", codePostal: "")
+            let user : UserModel = UserModel(login: login.text!, password: Password.text!, nom: "", prenom: "", dateNaissance: Date(), codePostal: "")
+            createLogin.VerifyDBCount(controller: self, User: user)
             
         }else {
             message = "Email ou mot de passe invalide"
@@ -154,8 +153,8 @@ class connection: UIViewController, UITextFieldDelegate {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if (segue.identifier == "Label" && self.message != "") {
-            let nextScene = segue.destination as? PopUpViewController
-            nextScene!.label = self.message
+            //let nextScene = segue.destination as? PopUpViewController
+            //nextScene!.label = self.message
         }
         
     }
@@ -168,15 +167,15 @@ class connection: UIViewController, UITextFieldDelegate {
         
     }
     func getResultDBCheck(){
-        print (connection.information)
-
             if connection.information.range(of: "Bienvenue") != nil 
             {
                 //Sauvegarder les éléments de connexion dans le Keychain
                 KeychainService.saveLogin(token: login.text! as NSString)
                 KeychainService.savePassword(token: Password.text! as NSString)
                 print("bienvenue vous vous êtes connecté")
-                
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.connected = true
+                self.performSegue(withIdentifier: "GoToAccueil", sender: self)
             }
             else
             {
@@ -186,4 +185,15 @@ class connection: UIViewController, UITextFieldDelegate {
         }
 
     
+}
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
